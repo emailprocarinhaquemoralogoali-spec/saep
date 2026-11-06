@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Consulta</title>
+</head>
+<body>
+
+<h1>Cadastrar Consulta</h1>
+
+<form th:action="@{/consultas/salvar}"
+      th:object="${consulta}"
+      method="post">
+
+    <label>Paciente:</label>
+
+    <select name="pacienteId" required>
+
+        <option value="">Selecione</option>
+
+        <option th:each="paciente : ${pacientes}"
+                th:value="${paciente.id}"
+                th:text="${paciente.nome}">
+        </option>
+
+    </select>
+
+    <br><br>
+
+    <label>Médico:</label>
+
+    <select name="medicoId" required>
+
+        <option value="">Selecione</option>
+
+        <option th:each="medico : ${medicos}"
+                th:value="${medico.id}"
+                th:text="${medico.nome}">
+        </option>
+
+    </select>
+
+    <br><br>
+
+    <label>Data da consulta:</label>
+
+    <input type="date" th:field="*{dataConsulta}" required>
+
+    <br><br>
+
+    <button type="submit">Salvar Consulta</button>
+
+</form>
+
+<a th:href="@{/consultas}">Voltar</a>
+
+</body>
+</html>

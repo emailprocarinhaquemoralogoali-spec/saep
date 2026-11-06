@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Alterar Medico</title>
+</head>
+<body>
+    <h1>Alterar Medico</h1>
+
+    <form th:action="@{/medico/alterar/{id}(id=${medico.id})}"
+          th:object="${medico}"
+          method="post">
+
+        <input type="hidden" th:field="*{id}">
+
+        <label>Nome:</label>
+        <input type="text" th:field="*{nome}" required>
+
+        <label>CRM:</label>
+        <input type="text" th:field="*{crm}" required>
+
+        <label>Especialidade:</label>
+        <input type="text" th:field="*{especialidade}" required>
+
+        <br>
+
+        <button type="submit">Salvar Alterações</button>
+
+    </form>
+
+    <a th:href="@{/medico}">Voltar</a>
+</body>
+</html>

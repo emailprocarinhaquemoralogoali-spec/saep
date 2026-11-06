@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Alterar Consulta</title>
+</head>
+<body>
+
+<h1>Alterar Data da Consulta</h1>
+
+<form th:action="@{/consultas/alterar}"
+      th:object="${consulta}"
+      method="post">
+
+    <input type="hidden" th:field="*{id}">
+
+    <p>
+        Paciente:
+        <span th:text="${consulta.paciente.nome}"></span>
+    </p>
+
+    <p>
+        Médico:
+        <span th:text="${consulta.medico.nome}"></span>
+    </p>
+
+    <label>Nova data:</label>
+
+    <input type="date" th:field="*{dataConsulta}" required>
+
+    <br><br>
+
+    <button type="submit">Salvar Alteração</button>
+
+</form>
+
+<a th:href="@{/consultas}">Voltar</a>
+
+</body>
+</html>

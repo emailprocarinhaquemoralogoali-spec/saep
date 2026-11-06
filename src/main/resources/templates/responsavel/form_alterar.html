@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Alterar Responsável</title>
+</head>
+<body>
+    <h1>Alterar Responsável</h1>
+
+    <form th:action="@{/responsavel/editar/{id}(id=${responsavel.id})}"
+          th:object="${responsavel}"
+          method="post">
+
+        <input type="hidden" th:field="*{id}">
+
+        <label>Nome:</label>
+        <input type="text" th:field="*{nome}" required>
+
+        <label>CPF:</label>
+        <input type="text" th:field="*{cpf}" required>
+
+        <label>Telefone:</label>
+        <input type="text" th:field="*{telefone}" required>
+
+        <label>Email:</label>
+        <input type="email" th:field="*{email}" required>
+
+        <button type="submit">Salvar Alterações</button>
+
+    </form>
+
+    <a th:href="@{/responsavel}">Voltar</a>
+</body>
+</html>

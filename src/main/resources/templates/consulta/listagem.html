@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Consultas</title>
+</head>
+<body>
+
+<h1>Lista de Consultas</h1>
+
+<a th:href="@{/consultas/inserir}">
+    Nova Consulta
+</a>
+<form th:action="@{/principal}" method="get">
+    <button type="submit">Voltar para a página principal</button>
+</form>
+
+<table border="1">
+
+    <thead>
+    <tr>
+        <th>Paciente</th>
+        <th>Responsável</th>
+        <th>Médico</th>
+        <th>Data</th>
+        <th>Ação</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="consulta : ${consultas}">
+
+        <td th:text="${consulta.paciente.nome}"></td>
+
+        <td th:text="${consulta.paciente.responsavel.nome}"></td>
+
+        <td th:text="${consulta.medico.nome}"></td>
+
+        <td th:text="${consulta.dataConsulta}"></td>
+
+        <td>
+            <a th:href="@{/consultas/alterar/{id}(id=${consulta.id})}">
+                Alterar data
+            </a>
+        </td>
+
+    </tr>
+    </tbody>
+
+</table>
+
+</body>
+</html>

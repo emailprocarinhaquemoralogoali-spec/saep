@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lista de Medicos</title>
+</head>
+<body>
+
+<h1>Lista de Medicos</h1>
+
+<a th:href="@{/medico/form_inserir}">Cadastrar Medico</a>
+<form th:action="@{/principal}" method="get">
+    <button type="submit">Voltar para a página principal</button>
+</form>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>CRM</th>
+        <th>Especialidade</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="medico : ${medicos}">
+        <td th:text="${medico.id}"></td>
+        <td th:text="${medico.nome}"></td>
+        <td th:text="${medico.crm}"></td>
+        <td th:text="${medico.especialidade}"></td>
+        <td>
+            <a th:href="@{/medico/alterar/{id}(id=${medico.id})}">Editar</a>
+
+            <a th:href="@{/medico/excluir/{id}(id=${medico.id})}">Excluir</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

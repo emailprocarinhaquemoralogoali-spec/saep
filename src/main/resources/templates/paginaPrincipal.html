@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página principal</title>
+</head>
+<body>
+    <h1>Página principal</h1>
+    <form th:action="@{/responsavel}" method="get">
+        <button type="submit">Responsáveis</button>
+    </form>
+<br>
+    <form th:action="@{/paciente}" method="get">
+        <button type="submit">Pacientes</button>
+    </form>
+<br>
+    <form th:action="@{/medico}" method="get">
+        <button type="submit">Médicos</button>
+    </form>
+<br>
+    <form th:action="@{/consultas}" method="get">
+        <button type="submit">Consultas</button>
+    </form>
+<br>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit">Sair</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lista de Pacientes</title>
+</head>
+<body>
+
+<h1>Lista de Pacientes</h1>
+
+<a th:href="@{/paciente/form_inserir}">Cadastrar Paciente</a>
+<form th:action="@{/principal}" method="get">
+    <button type="submit">Voltar para a página principal</button>
+</form>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Responsável</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="paciente : ${pacientes}">
+        <td th:text="${paciente.id}"></td>
+        <td th:text="${paciente.nome}"></td>
+        <td th:text="${paciente.responsavel.nome}"></td>
+        <td>
+            <a th:href="@{/paciente/alterar/{id}(id=${paciente.id})}">Editar</a>
+
+            <a th:href="@{/paciente/excluir/{id}(id=${paciente.id})}">Excluir</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

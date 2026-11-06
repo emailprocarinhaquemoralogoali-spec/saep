@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Alterar Paciente</title>
+</head>
+<body>
+    <h1>Alterar Paciente</h1>
+
+    <form th:action="@{/paciente/alterar/{id}(id=${paciente.id})}"
+          th:object="${paciente}"
+          method="post">
+
+        <input type="hidden" th:field="*{id}">
+
+        <label>Nome:</label>
+        <input type="text" th:field="*{nome}" required>
+
+        <label>Data de Nascimento:</label>
+        <input type="date" th:field="*{dataNascimento}" required>
+
+        <label>Responsável:</label>
+        <select name="responsavelId" required>
+            <option th:each="responsavel : ${responsaveis}"
+                    th:value="${responsavel.id}"
+                    th:text="${responsavel.nome}"
+                    th:selected="${responsavel.id == paciente.responsavel.id}"></option>
+        </select>
+
+        <button type="submit">Salvar Alterações</button>
+
+    </form>
+
+    <a th:href="@{/paciente}">Voltar</a>
+</body>
+</html>

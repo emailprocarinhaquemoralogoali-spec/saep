@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lista de Responsáveis</title>
+</head>
+<body>
+
+<h1>Lista de Responsáveis</h1>
+
+<a th:href="@{/responsavel/form_inserir}">Cadastrar Responsável</a>
+<form th:action="@{/principal}" method="get">
+    <button type="submit">Voltar para a página principal</button>
+</form>
+
+<form th:action="@{/responsavel}" method="get">
+    <label for="nome">Pesquisar responsável pelo nome:</label>
+    <input id="nome" type="search" name="nome" th:value="${nomeBusca}">
+    <button type="submit">Pesquisar</button>
+    <a th:href="@{/responsavel}">Limpar pesquisa</a>
+</form>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Telefone</th>
+        <th>Email</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="responsavel : ${responsaveis}">
+        <td th:text="${responsavel.id}"></td>
+        <td th:text="${responsavel.nome}"></td>
+        <td th:text="${responsavel.cpf}"></td>
+        <td th:text="${responsavel.telefone}"></td>
+        <td th:text="${responsavel.email}"></td>
+
+        <td>
+            <a th:href="@{/responsavel/editar/{id}(id=${responsavel.id})}">Editar</a>
+
+            <a th:href="@{/responsavel/excluir/{id}(id=${responsavel.id})}">Excluir</a>
+        </td>
+    </tr>
+    <tr th:if="${#lists.isEmpty(responsaveis)}">
+        <td colspan="6">Nenhum responsável encontrado.</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
